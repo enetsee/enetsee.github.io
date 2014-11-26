@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="./css/site.css">
   <body>    
  <div class="navbar navbar-default navbar-custom  no-margin one-edge-shadow" role="navigation">
       <div class="container">
@@ -99,16 +99,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.5/d3.min.js" charset="utf-8"></script>
 <script src="http://d3js.org/topojson.v1.min.js"></script>
 <script src="http://d3js.org/queue.v1.min.js"></script>
-<script src="js/app.js"></script>
-<script src="js/anim.js"></script>
-<script src="js/histogram.js"></script>
-<script src="js/map.js"></script>
+<script src="./js/app.js"></script>
+<script src="./js/anim.js"></script>
+<script src="./js/histogram.js"></script>
+<script src="./js/map.js"></script>
 <script>
 'use strict';  	
 queue()
-  .defer(d3.json, "/topojson/tectonics.json")
-	.defer(d3.json, "/topojson/world-50m.json")
-	.defer(d3.csv, "/data/quake1900_5plus_NOPLACE.json",type)
+  .defer(d3.json, "./topojson/tectonics.json")
+	.defer(d3.json, "./topojson/world-50m.json")
+	.defer(d3.csv, "./data/quake1900_5plus_NOPLACE.json",type)
 	.await(ready);
 
 var menuOffset = $('#menu')[0].offsetTop;

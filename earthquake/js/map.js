@@ -78,7 +78,7 @@ function worldMap(tectonics,world,maxEvents) {
 				svg.append("image")
 					.attr("y",-350)					
 					.attr("clip-path","url(#clip)")
-					.attr("xlink:href","../img/gray-earth.jpg")
+					.attr("xlink:href","./img/gray-earth.jpg")
 					.attr("width",928)
 					.attr("height",1227);
 					
