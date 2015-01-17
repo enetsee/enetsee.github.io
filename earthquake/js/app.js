@@ -12,8 +12,7 @@ function type(d,i) {
 }
 
 function ready(error,tectonics,world,quakeData) {
-
-  
+  console.log("ready");
   d3.select("#loading").remove();  
   var xf = crossfilter(quakeData);  
   var all = xf.groupAll();
