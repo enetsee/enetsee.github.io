@@ -24,6 +24,7 @@ function ready(error,tectonics,world,quakeData) {
   var msrDepth = dimDepth.group(function (x) { return Math.floor(x / 25) * 25; }).reduceCount();
   var dimDate = xf.dimension(function (d) { return d.time; });
   var msrDate = dimDate.group(d3.time.year).reduceCount();
+  console.log("dimensions defined");
   var quakes = worldMap(tectonics,world)
     .dimension(dimLat)
     .reset(function() { window.reset(0); })
@@ -78,9 +79,9 @@ function ready(error,tectonics,world,quakeData) {
     .scale_y(d3.scale.linear().range([120,0]))
     .filterTextFormat(d3.time.format("%Y"))
     .reset(function() { window.reset(3); })
-    .filterElem("#filters")     
+    .filterElem("#filters")
     .filter([new Date(2005, 1, 1), new Date(2015, 1, 1)]);
-
+  console.log("charts created");
   var charts = [quakes, magnitude, depth, timeline];
   var chart = d3.selectAll(".chart")
     .data(charts)
@@ -88,7 +89,7 @@ function ready(error,tectonics,world,quakeData) {
     renderAll();
   function render(method) { d3.select(this).call(method); }
   function renderAll() {
-    chart.each(render);    
+    chart.each(render);
   }
 
   window.reset = function(i) {
