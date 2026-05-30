@@ -28,20 +28,10 @@ driven by [LeanInk](https://github.com/leanprover/LeanInk). **Hover over a tacti
 (or the goal markers in the gutter) to see the proof state at that point: the
 hypotheses in context and the goal that remains.
 
-::: {.column-page-inset}
+::: {.alectryon-center}
 {{< include _Monoid.html >}}
 :::
 
 The associativity proof goes by induction on `c`: the `zero` case closes by
 `rfl`, and the `succ` case rewrites with the inductive hypothesis. Step through
 it above to watch the goal shrink.
-
-::: {.callout-note collapse="true"}
-## How this is built
-
-The Lean source lives in `_lean/monoid-laws/` and is **not** part of the site
-render. Running `./scripts/build-lean.sh` locally produces the HTML fragment and
-Alectryon assets you see here, which are committed to the repo. The publishing
-GitHub Action then just renders the committed output — it never needs a Lean
-toolchain.
-:::
