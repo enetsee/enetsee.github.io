@@ -8,6 +8,11 @@
 # Python venv used by the Lean (Alectryon) build, if created locally
 /.venv/
 
+# Lean build artifacts. The _lean/ sources (lakefile, toolchain, .lean) are
+# committed for reproducibility; compiled output is not.
+_lean/**/.lake/
+_lean/**/pygments.css
+
 # NOTE: _freeze/ is intentionally NOT ignored — it is committed so the
 # GitHub Action can render cached output without OCaml/Lean toolchains.
 

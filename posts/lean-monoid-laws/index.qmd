@@ -1,0 +1,47 @@
+---
+title: "The Monoid Laws, Proved in Lean"
+description: "Interactive Lean proofs with hoverable goal states, via LeanInk + Alectryon."
+author: "Michael Thomas"
+date: "2026-05-30"
+categories: [lean, type-theory]
+format:
+  html:
+    include-in-header:
+      - text: |
+          <link rel="stylesheet" href="alectryon.css">
+          <link rel="stylesheet" href="pygments.css">
+    include-after-body:
+      - text: |
+          <script src="alectryon.js"></script>
+resources:
+  - alectryon.css
+  - alectryon.js
+  - pygments.css
+---
+
+In [an earlier post](../ocaml-and-math/) the monoid laws showed up as an OCaml
+`fold`. Here they are again as **theorems in Lean 4** — and this time the proofs
+are interactive.
+
+Each proof below is rendered with [Alectryon](https://github.com/cpitclaudel/alectryon)
+driven by [LeanInk](https://github.com/leanprover/LeanInk). **Hover over a tactic**
+(or the goal markers in the gutter) to see the proof state at that point: the
+hypotheses in context and the goal that remains.
+
+::: {.column-page-inset}
+{{< include _Monoid.html >}}
+:::
+
+The associativity proof goes by induction on `c`: the `zero` case closes by
+`rfl`, and the `succ` case rewrites with the inductive hypothesis. Step through
+it above to watch the goal shrink.
+
+::: {.callout-note collapse="true"}
+## How this is built
+
+The Lean source lives in `_lean/monoid-laws/` and is **not** part of the site
+render. Running `./scripts/build-lean.sh` locally produces the HTML fragment and
+Alectryon assets you see here, which are committed to the repo. The publishing
+GitHub Action then just renders the committed output — it never needs a Lean
+toolchain.
+:::
