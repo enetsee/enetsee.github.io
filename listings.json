@@ -1,0 +1,9 @@
+[
+  {
+    "listing": "/index.html",
+    "items": [
+      "/posts/hello-quarto/index.html",
+      "/posts/ocaml-and-math/index.html"
+    ]
+  }
+]

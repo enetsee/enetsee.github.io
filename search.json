@@ -1,0 +1,51 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "I write about programming languages, type theory, and proof assistants — mostly through the lens of OCaml and Lean.\nThis blog is built with Quarto and published from its source."
+  },
+  {
+    "objectID": "posts/ocaml-and-math/index.html",
+    "href": "posts/ocaml-and-math/index.html",
+    "title": "Folds, Monoids, and a Little Algebra",
+    "section": "",
+    "text": "A monoid is a set \\(M\\) with an associative binary operation \\(\\cdot : M \\times M \\to M\\) and an identity element \\(e \\in M\\) such that\n\\[\ne \\cdot x = x \\cdot e = x \\qquad \\text{and} \\qquad\n(x \\cdot y) \\cdot z = x \\cdot (y \\cdot z)\n\\]\nfor all \\(x, y, z \\in M\\). Inline math works too: the natural numbers \\((\\NN, +, 0)\\) form a monoid, as do lists under concatenation."
+  },
+  {
+    "objectID": "posts/ocaml-and-math/index.html#monoids",
+    "href": "posts/ocaml-and-math/index.html#monoids",
+    "title": "Folds, Monoids, and a Little Algebra",
+    "section": "",
+    "text": "A monoid is a set \\(M\\) with an associative binary operation \\(\\cdot : M \\times M \\to M\\) and an identity element \\(e \\in M\\) such that\n\\[\ne \\cdot x = x \\cdot e = x \\qquad \\text{and} \\qquad\n(x \\cdot y) \\cdot z = x \\cdot (y \\cdot z)\n\\]\nfor all \\(x, y, z \\in M\\). Inline math works too: the natural numbers \\((\\NN, +, 0)\\) form a monoid, as do lists under concatenation."
+  },
+  {
+    "objectID": "posts/ocaml-and-math/index.html#in-ocaml",
+    "href": "posts/ocaml-and-math/index.html#in-ocaml",
+    "title": "Folds, Monoids, and a Little Algebra",
+    "section": "In OCaml",
+    "text": "In OCaml\nWe can capture this directly with a module type, and fold over any container given a monoid instance:\nmodule type Monoid = sig\n  type t\n  val empty : t\n  val combine : t -&gt; t -&gt; t\nend\n\n(* Sum the elements of a list through any monoid. *)\nlet fold_monoid (type a) (module M : Monoid with type t = a) (xs : a list) : a =\n  List.fold_left M.combine M.empty xs\n\nmodule Sum : Monoid with type t = int = struct\n  type t = int\n  let empty = 0\n  let combine = ( + )\nend\n\nlet () =\n  let total = fold_monoid (module Sum) [ 1; 2; 3; 4 ] in\n  Printf.printf \"sum = %d\\n\" total   (* sum = 10 *)\nThe associativity law is exactly what makes the fold’s grouping irrelevant:\n\\[\n\\big((1 + 2) + 3\\big) + 4 \\;=\\; 1 + \\big(2 + (3 + 4)\\big).\n\\]"
+  },
+  {
+    "objectID": "posts/ocaml-and-math/index.html#whats-next",
+    "href": "posts/ocaml-and-math/index.html#whats-next",
+    "title": "Folds, Monoids, and a Little Algebra",
+    "section": "What’s next",
+    "text": "What’s next\nA follow-up post will show the same idea in Lean, with the monoid laws stated as theorems and the proof states rendered inline."
+  },
+  {
+    "objectID": "posts/hello-quarto/index.html",
+    "href": "posts/hello-quarto/index.html",
+    "title": "Hello, Quarto",
+    "section": "",
+    "text": "After a decade of neglect, the old Jekyll site is gone and this blog now runs on Quarto.\nThe plan for what lives here: programming languages, type theory, and proof assistants — with code in OCaml and proofs in Lean, plenty of mathematics, and the occasional digression.\nPosts render to HTML with live math, and can also be exported to PDF when a typeset version is useful."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "enetsee",
+    "section": "",
+    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nHello, Quarto\n\n\n\nmeta\n\n\n\nRebuilding the blog on Quarto.\n\n\n\n\n\nMay 30, 2026\n\n\nMichael Thomas\n\n\n\n\n\n\n\n\n\n\n\n\nFolds, Monoids, and a Little Algebra\n\n\n\nocaml\n\ntype-theory\n\n\n\nA test post exercising math typesetting and OCaml highlighting.\n\n\n\n\n\nMay 30, 2026\n\n\nMichael Thomas\n\n\n\n\n\nNo matching items"
+  }
+]

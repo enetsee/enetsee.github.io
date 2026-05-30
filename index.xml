@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>enetsee</title>
+<link>https://enetsee.github.io/</link>
+<atom:link href="https://enetsee.github.io/index.xml" rel="self" type="application/rss+xml"/>
+<description>Notes on programming languages, type theory, OCaml and Lean.</description>
+<generator>quarto-1.9.38</generator>
+<lastBuildDate>Fri, 29 May 2026 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Hello, Quarto</title>
+  <dc:creator>Michael Thomas</dc:creator>
+  <link>https://enetsee.github.io/posts/hello-quarto/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<p>After a decade of neglect, the old Jekyll site is gone and this blog now runs on <a href="https://quarto.org">Quarto</a>.</p>
+<p>The plan for what lives here: programming languages, type theory, and proof assistants — with code in <strong>OCaml</strong> and proofs in <strong>Lean</strong>, plenty of mathematics, and the occasional digression.</p>
+<p>Posts render to HTML with live math, and can also be exported to PDF when a typeset version is useful.</p>
+
+
+
+ ]]></description>
+  <category>meta</category>
+  <guid>https://enetsee.github.io/posts/hello-quarto/</guid>
+  <pubDate>Fri, 29 May 2026 23:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Folds, Monoids, and a Little Algebra</title>
+  <dc:creator>Michael Thomas</dc:creator>
+  <link>https://enetsee.github.io/posts/ocaml-and-math/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<section id="monoids" class="level2">
+<h2 class="anchored" data-anchor-id="monoids">Monoids</h2>
+<p>A <strong>monoid</strong> is a set <img src="https://latex.codecogs.com/png.latex?M"> with an associative binary operation <img src="https://latex.codecogs.com/png.latex?%5Ccdot%20:%20M%20%5Ctimes%20M%20%5Cto%20M"> and an identity element <img src="https://latex.codecogs.com/png.latex?e%20%5Cin%20M"> such that</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0Ae%20%5Ccdot%20x%20=%20x%20%5Ccdot%20e%20=%20x%20%5Cqquad%20%5Ctext%7Band%7D%20%5Cqquad%0A(x%20%5Ccdot%20y)%20%5Ccdot%20z%20=%20x%20%5Ccdot%20(y%20%5Ccdot%20z)%0A"></p>
+<p>for all <img src="https://latex.codecogs.com/png.latex?x,%20y,%20z%20%5Cin%20M">. Inline math works too: the natural numbers <img src="https://latex.codecogs.com/png.latex?(%5CNN,%20+,%200)"> form a monoid, as do lists under concatenation.</p>
+</section>
+<section id="in-ocaml" class="level2">
+<h2 class="anchored" data-anchor-id="in-ocaml">In OCaml</h2>
+<p>We can capture this directly with a module type, and <code>fold</code> over any container given a monoid instance:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode ocaml code-with-copy"><code class="sourceCode ocaml"><span id="cb1-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">module</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">type</span> Monoid = <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">sig</span></span>
+<span id="cb1-2">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">type</span> t</span>
+<span id="cb1-3">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">val</span> empty : t</span>
+<span id="cb1-4">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">val</span> combine : t -&gt; t -&gt; t</span>
+<span id="cb1-5"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">end</span></span>
+<span id="cb1-6"></span>
+<span id="cb1-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(* Sum the elements of a list through any monoid. *)</span></span>
+<span id="cb1-8"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">let</span> fold_monoid (<span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">type</span> a) (<span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">module</span> M : Monoid <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">with</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">type</span> t = a) (xs : a <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">list</span>) : a =</span>
+<span id="cb1-9">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">List</span>.fold_left M.combine M.empty xs</span>
+<span id="cb1-10"></span>
+<span id="cb1-11"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">module</span> Sum : Monoid <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">with</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">type</span> t = <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">int</span> = <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">struct</span></span>
+<span id="cb1-12">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">type</span> t = <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">int</span></span>
+<span id="cb1-13">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">let</span> empty = <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span></span>
+<span id="cb1-14">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">let</span> combine = ( + )</span>
+<span id="cb1-15"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">end</span></span>
+<span id="cb1-16"></span>
+<span id="cb1-17"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">let</span> () =</span>
+<span id="cb1-18">  <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">let</span> total = fold_monoid (<span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">module</span> Sum) [ <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>; <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>; <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>; <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span> ] <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span></span>
+<span id="cb1-19">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">Printf</span>.printf <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"sum = %d</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span> total   <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(* sum = 10 *)</span></span></code></pre></div></div>
+<p>The associativity law is exactly what makes the fold’s <em>grouping</em> irrelevant:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbig((1%20+%202)%20+%203%5Cbig)%20+%204%20%5C;=%5C;%201%20+%20%5Cbig(2%20+%20(3%20+%204)%5Cbig).%0A"></p>
+</section>
+<section id="whats-next" class="level2">
+<h2 class="anchored" data-anchor-id="whats-next">What’s next</h2>
+<p>A follow-up post will show the same idea in <strong>Lean</strong>, with the monoid laws stated as theorems and the proof states rendered inline.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>ocaml</category>
+  <category>type-theory</category>
+  <guid>https://enetsee.github.io/posts/ocaml-and-math/</guid>
+  <pubDate>Fri, 29 May 2026 23:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>
