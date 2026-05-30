@@ -6,11 +6,11 @@ Everything you need to build and publish the blog on a fresh macOS machine
 ## 1. Core toolchain
 
 ```sh
-# CLI tools
-brew install neovim ripgrep fd          # editor + fuzzy-find/grep helpers
-brew install git gh                      # gh = GitHub CLI (for publishing)
-brew install tree-sitter tree-sitter-cli # Neovim treesitter needs the lib + CLI
+brew install git gh    # gh = GitHub CLI, used for publishing
 ```
+
+(Editor tooling is separate — set up your editor however you like. If you use the
+Neovim config, its install steps are in `~/.config/nvim/README.md`.)
 
 ### Quarto
 
@@ -45,30 +45,15 @@ gh repo clone enetsee/enetsee.github.io
 cd enetsee.github.io
 ```
 
-## 3. Neovim
+## 3. Editor
 
-The config is at `~/.config/nvim/` (tracked separately from the blog). On first
-launch it bootstraps [lazy.nvim](https://lazy.folke.io) and installs everything.
-
-```sh
-nvim --headless "+Lazy! sync" +qa               # install plugins
-# install treesitter parsers (open any file once, or force them):
-nvim --headless "+Lazy! load nvim-treesitter" \
-  "+TSInstallSync markdown markdown_inline ocaml ocaml_interface lua bash yaml json" +qa
-```
-
-For OCaml LSP **inside** code cells, install the language server in your opam
-switch (optional — highlighting works without it):
-
-```sh
-opam install ocaml-lsp-server ocamlformat
-```
-
-See **[03-neovim.md](03-neovim.md)** for the full editor walkthrough.
+The blog is just text files — use whatever editor you like. (I use Neovim; that
+config and its own docs live at `~/.config/nvim/README.md`, separate from the
+blog and from these docs.)
 
 ## 4. Lean rendering toolchain (only if you write Lean posts)
 
-This is the involved one — see **[04-lean-proofs.md](04-lean-proofs.md)** for the
+This is the involved one — see **[03-lean-proofs.md](03-lean-proofs.md)** for the
 full story and the macOS caveat. The short version:
 
 ```sh
@@ -80,7 +65,7 @@ python3 -m venv .venv
 elan toolchain install leanprover/lean4:v4.19.0-rc3
 git clone https://github.com/gaetanserre/LeanInk ~/.local/src/LeanInk-g
 cd ~/.local/src/LeanInk-g && lake build
-# then RE-LINK the binary for macOS Tahoe — see 04-lean-proofs.md
+# then RE-LINK the binary for macOS Tahoe — see 03-lean-proofs.md
 ```
 
 ## 5. Sanity check

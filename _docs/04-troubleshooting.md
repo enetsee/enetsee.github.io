@@ -51,31 +51,14 @@ The Homebrew cask runs a `.pkg` installer needing `sudo`, which can't prompt in 
 non-interactive shell. Use the tarball install instead — see
 [01-machine-setup.md](01-machine-setup.md#quarto).
 
-## Neovim won't start: `libtree-sitter.0.26.dylib` not found
-
-The Homebrew `neovim` bottle needs the `tree-sitter` library:
-`brew install tree-sitter`.
-
-## Neovim treesitter crash on `.qmd`: "attempt to call method 'range' (a nil value)" {#neovim-treesitter-crash}
-
-`nvim-treesitter`'s archived `master` branch ships a markdown injection directive
-written for the pre-0.11 query format; Neovim 0.12 passes a *list* of nodes, so it
-crashes — which breaks otter and fenced-code highlighting. Fixed by a shim in
-`~/.config/nvim/lua/plugins/editor.lua` that re-registers
-`set-lang-from-info-string!` (and `set-lang-from-mimetype!`) with
-`{ force = true, all = true }` and handles the node-list. **Don't delete the shim.**
-(Longer-term fix would be moving to the treesitter `main` branch.)
-
-## Neovim: nvim-lspconfig deprecation traceback at startup
-
-`require('lspconfig').x.setup{}` is deprecated on Neovim 0.11+. The config uses the
-native `vim.lsp.config(...)` + `vim.lsp.enable({...})` API instead. If you re-add a
-server, follow that pattern — don't call the old `.setup{}`.
+> **Neovim issues** (won't start, treesitter crash, LSP deprecation) are
+> documented separately in `~/.config/nvim/README.md` — they're editor config,
+> not blog problems.
 
 ## Lean: `leanInk` aborts with `SG_READ_ONLY` {#leanink-abort}
 
 macOS Tahoe rejects binaries linked by Lean's bundled linker. Re-link with the
-system compiler — full recipe in [04-lean-proofs.md](04-lean-proofs.md#one-time-build-leanink-and-the-macos-tahoe-fix).
+system compiler — full recipe in [03-lean-proofs.md](03-lean-proofs.md#one-time-build-leanink-and-the-macos-tahoe-fix).
 A `SG_READ_ONLY` line on **stderr without a crash** is harmless; the build script
 filters it out.
 

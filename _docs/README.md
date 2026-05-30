@@ -10,20 +10,21 @@ blog for technical writing (programming languages, type theory, OCaml, Lean).
 ## Read these in order
 
 1. **[01-machine-setup.md](01-machine-setup.md)** — set up a fresh Mac from zero
-   (Quarto, Neovim, LaTeX, and the Lean rendering toolchain).
+   (Quarto, LaTeX, and the Lean rendering toolchain).
 2. **[02-authoring.md](02-authoring.md)** — the day-to-day loop: new post, math,
    OCaml, live preview, publish.
-3. **[03-neovim.md](03-neovim.md)** — the editor setup and a VSCode-style
-   keybinding cheat sheet.
-4. **[04-lean-proofs.md](04-lean-proofs.md)** — render Lean proofs with hoverable
+3. **[03-lean-proofs.md](03-lean-proofs.md)** — render Lean proofs with hoverable
    goal states; how to add a new one.
-5. **[05-troubleshooting.md](05-troubleshooting.md)** — every gotcha we hit, and
+4. **[04-troubleshooting.md](04-troubleshooting.md)** — every gotcha we hit, and
    the fix.
+
+> **Editor:** the Neovim config is its own thing — documented at
+> `~/.config/nvim/README.md`, not here. It has nothing to do with the blog.
 
 ## The 30-second mental model
 
 ```
-            you write .qmd in Neovim
+            you write .qmd in your editor
                      │
             git push  ▼  (branch: main)
         ┌─────────────────────────────┐

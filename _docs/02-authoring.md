@@ -73,7 +73,7 @@ let rec map f = function
 
 Other languages: anything in `quarto pandoc --list-highlight-languages`.
 **Code is not executed** — paste any output yourself. (Lean proofs are a special
-case with real proof states — see [04-lean-proofs.md](04-lean-proofs.md).)
+case with real proof states — see [03-lean-proofs.md](03-lean-proofs.md).)
 
 ## Preview while writing
 
@@ -114,7 +114,7 @@ gh run list --limit 3        # recent runs + pass/fail
 ```
 
 If you don't see changes in the browser afterwards, it's almost always **cache** —
-see [05-troubleshooting.md](05-troubleshooting.md#i-dont-see-my-changes).
+see [04-troubleshooting.md](04-troubleshooting.md#i-dont-see-my-changes).
 
 ## Edit something site-wide
 
