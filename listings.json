@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/lean-monoid-laws/index.html",
       "/posts/hello-quarto/index.html",
       "/posts/ocaml-and-math/index.html"
     ]
