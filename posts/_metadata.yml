@@ -1,0 +1,10 @@
+# options specified here will apply to all posts in this folder
+
+# freeze computational/embedded output: re-render only when the source
+# changes, so the GitHub Action never needs OCaml/Lean. The committed
+# _freeze/ directory is what CI renders from.
+# (see https://quarto.org/docs/projects/code-execution.html#freeze)
+freeze: auto
+
+# Enable banner style title blocks
+title-block-banner: true

@@ -1,0 +1,62 @@
+---
+title: "Folds, Monoids, and a Little Algebra"
+description: "A test post exercising math typesetting and OCaml highlighting."
+author: "Michael Thomas"
+date: "2026-05-30"
+categories: [ocaml, type-theory]
+format:
+  html: default
+  # Uncomment to also build a typeset PDF of this post:
+  # pdf: default
+---
+
+## Monoids
+
+A **monoid** is a set $M$ with an associative binary operation
+$\cdot : M \times M \to M$ and an identity element $e \in M$ such that
+
+$$
+e \cdot x = x \cdot e = x \qquad \text{and} \qquad
+(x \cdot y) \cdot z = x \cdot (y \cdot z)
+$$
+
+for all $x, y, z \in M$. Inline math works too: the natural numbers
+$(\NN, +, 0)$ form a monoid, as do lists under concatenation.
+
+## In OCaml
+
+We can capture this directly with a module type, and `fold` over any
+container given a monoid instance:
+
+```ocaml
+module type Monoid = sig
+  type t
+  val empty : t
+  val combine : t -> t -> t
+end
+
+(* Sum the elements of a list through any monoid. *)
+let fold_monoid (type a) (module M : Monoid with type t = a) (xs : a list) : a =
+  List.fold_left M.combine M.empty xs
+
+module Sum : Monoid with type t = int = struct
+  type t = int
+  let empty = 0
+  let combine = ( + )
+end
+
+let () =
+  let total = fold_monoid (module Sum) [ 1; 2; 3; 4 ] in
+  Printf.printf "sum = %d\n" total   (* sum = 10 *)
+```
+
+The associativity law is exactly what makes the fold's *grouping* irrelevant:
+
+$$
+\big((1 + 2) + 3\big) + 4 \;=\; 1 + \big(2 + (3 + 4)\big).
+$$
+
+## What's next
+
+A follow-up post will show the same idea in **Lean**, with the monoid laws
+stated as theorems and the proof states rendered inline.

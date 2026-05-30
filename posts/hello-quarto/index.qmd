@@ -1,0 +1,17 @@
+---
+title: "Hello, Quarto"
+description: "Rebuilding the blog on Quarto."
+author: "Michael Thomas"
+date: "2026-05-30"
+categories: [meta]
+---
+
+After a decade of neglect, the old Jekyll site is gone and this blog now runs
+on [Quarto](https://quarto.org).
+
+The plan for what lives here: programming languages, type theory, and proof
+assistants — with code in **OCaml** and proofs in **Lean**, plenty of
+mathematics, and the occasional digression.
+
+Posts render to HTML with live math, and can also be exported to PDF when a
+typeset version is useful.

@@ -1,0 +1,17 @@
+---
+title: "About"
+image: profile.jpg
+about:
+  template: jolla
+  links:
+    - icon: github
+      text: GitHub
+      href: https://github.com/enetsee
+---
+
+I write about programming languages, type theory, and proof assistants —
+mostly through the lens of [OCaml](https://ocaml.org) and
+[Lean](https://lean-lang.org).
+
+This blog is built with [Quarto](https://quarto.org) and published from
+[its source](https://github.com/enetsee/enetsee.github.io).

@@ -1,0 +1,56 @@
+project:
+  type: website
+  # local render output (git-ignored); CI publishes to the gh-pages branch
+  output-dir: _site
+
+website:
+  title: "enetsee"
+  description: "Notes on programming languages, type theory, OCaml and Lean."
+  site-url: https://enetsee.github.io
+  repo-url: https://github.com/enetsee/enetsee.github.io
+  navbar:
+    right:
+      - text: Home
+        href: index.qmd
+      - about.qmd
+      - icon: github
+        href: https://github.com/enetsee
+      - icon: rss
+        href: index.xml
+
+format:
+  html:
+    theme:
+      light: cosmo
+      dark: darkly
+    css: styles.css
+    toc: true
+    toc-depth: 3
+    code-copy: true
+    code-overflow: wrap
+    code-link: true
+    highlight-style: github
+    html-math-method: mathjax
+    # mathjax with a couple of common macros available in every post
+    include-in-header:
+      - text: |
+          <script>
+          window.MathJax = {
+            tex: {
+              inlineMath: [['$', '$'], ['\\(', '\\)']],
+              displayMath: [['$$', '$$'], ['\\[', '\\]']],
+              macros: {
+                RR: "\\mathbb{R}",
+                NN: "\\mathbb{N}",
+                ZZ: "\\mathbb{Z}",
+                llbracket: "[\\![",
+                rrbracket: "]\\!]"
+              }
+            }
+          };
+          </script>
+
+# Cache computed/embedded output so the GitHub Action never needs the
+# OCaml / Lean toolchains. Re-rendered only when a source file changes.
+execute:
+  freeze: auto

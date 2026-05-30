@@ -1,0 +1,14 @@
+# Quarto local render artifacts
+/.quarto/
+/_site/
+
+# Editor / OS noise
+.DS_Store
+
+# Python venv used by the Lean (Alectryon) build, if created locally
+/.venv/
+
+# NOTE: _freeze/ is intentionally NOT ignored — it is committed so the
+# GitHub Action can render cached output without OCaml/Lean toolchains.
+
+**/*.quarto_ipynb

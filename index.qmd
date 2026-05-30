@@ -1,0 +1,16 @@
+---
+title: "enetsee"
+subtitle: "Programming languages, type theory, OCaml & Lean"
+listing:
+  contents: posts
+  feed: true
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: true
+  filter-ui: true
+page-layout: full
+title-block-banner: true
+---
+
+
