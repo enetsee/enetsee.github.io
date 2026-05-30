@@ -10,7 +10,7 @@
 <atom:link href="https://enetsee.github.io/index.xml" rel="self" type="application/rss+xml"/>
 <description>Notes on programming languages, type theory, OCaml and Lean.</description>
 <generator>quarto-1.9.38</generator>
-<lastBuildDate>Fri, 29 May 2026 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sat, 30 May 2026 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Hello, Quarto</title>
   <dc:creator>Michael Thomas</dc:creator>
@@ -31,7 +31,7 @@
  ]]></description>
   <category>meta</category>
   <guid>https://enetsee.github.io/posts/hello-quarto/</guid>
-  <pubDate>Fri, 29 May 2026 23:00:00 GMT</pubDate>
+  <pubDate>Sat, 30 May 2026 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Folds, Monoids, and a Little Algebra</title>
@@ -188,7 +188,7 @@ font-style: inherit;">(* sum = 10 *)</span></span></code></pre></div></div>
   <category>ocaml</category>
   <category>type-theory</category>
   <guid>https://enetsee.github.io/posts/ocaml-and-math/</guid>
-  <pubDate>Fri, 29 May 2026 23:00:00 GMT</pubDate>
+  <pubDate>Sat, 30 May 2026 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

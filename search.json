@@ -1,12 +1,5 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "I write about programming languages, type theory, and proof assistants — mostly through the lens of OCaml and Lean.\nThis blog is built with Quarto and published from its source."
-  },
-  {
     "objectID": "posts/ocaml-and-math/index.html",
     "href": "posts/ocaml-and-math/index.html",
     "title": "Folds, Monoids, and a Little Algebra",
@@ -35,17 +28,24 @@
     "text": "What’s next\nA follow-up post will show the same idea in Lean, with the monoid laws stated as theorems and the proof states rendered inline."
   },
   {
-    "objectID": "posts/hello-quarto/index.html",
-    "href": "posts/hello-quarto/index.html",
-    "title": "Hello, Quarto",
-    "section": "",
-    "text": "After a decade of neglect, the old Jekyll site is gone and this blog now runs on Quarto.\nThe plan for what lives here: programming languages, type theory, and proof assistants — with code in OCaml and proofs in Lean, plenty of mathematics, and the occasional digression.\nPosts render to HTML with live math, and can also be exported to PDF when a typeset version is useful."
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "enetsee",
     "section": "",
     "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nHello, Quarto\n\n\n\nmeta\n\n\n\nRebuilding the blog on Quarto.\n\n\n\n\n\nMay 30, 2026\n\n\nMichael Thomas\n\n\n\n\n\n\n\n\n\n\n\n\nFolds, Monoids, and a Little Algebra\n\n\n\nocaml\n\ntype-theory\n\n\n\nA test post exercising math typesetting and OCaml highlighting.\n\n\n\n\n\nMay 30, 2026\n\n\nMichael Thomas\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "I write about programming languages, type theory, and proof assistants — mostly through the lens of OCaml and Lean.\nThis blog is built with Quarto and published from its source."
+  },
+  {
+    "objectID": "posts/hello-quarto/index.html",
+    "href": "posts/hello-quarto/index.html",
+    "title": "Hello, Quarto",
+    "section": "",
+    "text": "After a decade of neglect, the old Jekyll site is gone and this blog now runs on Quarto.\nThe plan for what lives here: programming languages, type theory, and proof assistants — with code in OCaml and proofs in Lean, plenty of mathematics, and the occasional digression.\nPosts render to HTML with live math, and can also be exported to PDF when a typeset version is useful."
   }
 ]
